@@ -12,5 +12,5 @@ use App\Http\Controllers\UsersController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::resource('/', UsersController::class);
+Route::redirect('/', 'user');
+Route::resource('/user', UsersController::class);

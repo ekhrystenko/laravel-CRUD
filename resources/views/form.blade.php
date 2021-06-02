@@ -5,7 +5,7 @@
 @section('content')
 <div class="col-8 offset-2 mt-2">
     <h3 class="mb-4 text-center">{{ isset($user) ? 'Update'.$user->name : 'Create new' }}</h3>
-    <form action="{{ route('store') }}" method="post">
+    <form action="{{ route('user.store') }}" method="post">
         @csrf
 
         <div class="form-group mt-2">
@@ -39,7 +39,7 @@
         @enderror
 
         <button type="submit" class="btn btn-primary mt-2">Create</button>
-        <a href="{{ route('index') }}" class="btn btn-secondary mt-2">Back</a>
+        <a href="{{ route('user.index') }}" class="btn btn-secondary mt-2">Back</a>
     </form>
 </div>
 @endsection
