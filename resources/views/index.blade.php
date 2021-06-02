@@ -29,7 +29,7 @@
                         <a href="{{ route('user.show', $user) }}" class="btn btn-primary btn-block">Show</a>
                     </td>
                     <td>
-                        <a href="#" class="btn btn-warning btn-block">Edit</a>
+                        <a href="{{ route('user.edit', $user) }}" class="btn btn-warning btn-block">Edit</a>
                     </td>
                     <td>
                         <form action="#" method="POST">
