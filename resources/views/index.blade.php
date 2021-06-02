@@ -16,11 +16,12 @@
     </tr>
     </thead>
     <tbody>
+    @foreach($users as $user)
     <tr>
-        <th scope="row">1</th>
-        <td>1</td>
-        <td>1</td>
-        <td>1</td>
+        <th scope="row">{{ $user->id }}</th>
+        <td>{{ $user->name }}</td>
+        <td>{{ $user->email }}</td>
+        <td>{{ $user->phone}}</td>
         <td>
             <a href="{{ route('show', 1) }}" class="btn btn-primary btn-block">Show</a>
         </td>
@@ -33,6 +34,8 @@
         </form>
     </td>
     </tr>
+    @endforeach
     </tbody>
 </table>
+    {{ $users->links() }}
 @endsection
