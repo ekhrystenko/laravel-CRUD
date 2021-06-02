@@ -46,7 +46,7 @@ class UsersController extends Controller
             'email' => $request->email,
             'phone' => $request->phone,
         ]);
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with('success', 'Created user '.$request->name.'!');
     }
 
     /**
@@ -81,7 +81,7 @@ class UsersController extends Controller
     public function update(UserRequest $request, User $user)
     {
         $user->update($request->only(['name', 'email', 'phone']));
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with('update', 'Updated user '.$request->name.'!');
     }
 
     /**
@@ -93,6 +93,6 @@ class UsersController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with('delete', 'Deleted user '.$user->name.'!');
     }
 }

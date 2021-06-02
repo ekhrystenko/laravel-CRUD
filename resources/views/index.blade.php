@@ -6,7 +6,7 @@
 
     @if(count($users))
         <a href="{{ route('user.create') }}" class="btn btn-success mb-2">Create new</a>
-        <table class="table table-striped">
+        <table class="table table-striped table-sm">
             <thead>
             <tr>
                 <th scope="col">Id</th>
@@ -24,9 +24,9 @@
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->phone}}</td>
                     <td>
-                        <a href="{{ route('user.show', $user) }}" class="btn btn-primary btn-block">Show</a>
-                        <a href="{{ route('user.edit', $user) }}" class="btn btn-warning btn-block">Edit</a>
-                        <form action="{{ route('user.destroy', $user) }}" method="POST" class="d-inline">
+                        <form action="{{ route('user.destroy', $user) }}" method="POST">
+                            <a href="{{ route('user.show', $user) }}" class="btn btn-primary btn-block">Show</a>
+                            <a href="{{ route('user.edit', $user) }}" class="btn btn-warning btn-block">Edit</a>
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>
