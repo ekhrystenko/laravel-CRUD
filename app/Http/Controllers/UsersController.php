@@ -12,9 +12,13 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::paginate(10);
+        $productsQuery = User::query();
+        if ($request->filled('search'))
+            $productsQuery->where('name', 'LIKE', "%{$request->search}%");
+
+        $users = $productsQuery->paginate(10)->withPath("?" . $request->getQueryString());
         return view('index', compact('users'));
     }
 
