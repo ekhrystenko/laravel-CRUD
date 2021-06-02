@@ -16,7 +16,7 @@
     <nav class="navbar navbar-light mb-3">
         <div class="container-fluid">
             <a href="{{ route('user.index') }}" class="navbar-brand">Userbook</a>
-            <form class="d-flex" action="/" method="get">
+            <form class="d-flex" action="{{ route('user.index') }}" method="get">
                 <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search"
                        value="{{ request()->search }}">
                 <button class="btn btn-outline-success" type="submit">Search</button>
