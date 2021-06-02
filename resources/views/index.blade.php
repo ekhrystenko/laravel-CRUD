@@ -32,7 +32,9 @@
                         <a href="{{ route('user.edit', $user) }}" class="btn btn-warning btn-block">Edit</a>
                     </td>
                     <td>
-                        <form action="#" method="POST">
+                        <form action="{{ route('user.destroy', $user) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
                     </td>
