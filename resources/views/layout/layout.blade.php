@@ -13,7 +13,7 @@
 </head>
 <body>
 <div class="container">
-    <nav class="navbar navbar-light bg-light mb-3">
+    <nav class="navbar navbar-light mb-3">
         <div class="container-fluid">
             <a href="{{ route('user.index') }}" class="navbar-brand">Userbook</a>
             <form class="d-flex" action="/" method="get">
