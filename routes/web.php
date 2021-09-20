@@ -13,4 +13,6 @@ use App\Http\Controllers\UsersController;
 |
 */
 Route::redirect('/', 'user');
+Route::get('/user/export', [UsersController::class, 'export'])->name('user.export');
+Route::post('/user/import', [UsersController::class, 'import'])->name('user.import');
 Route::resource('/user', UsersController::class);

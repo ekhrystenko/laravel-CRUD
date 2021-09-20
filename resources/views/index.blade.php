@@ -6,7 +6,8 @@
 
     @if(count($users))
         <a href="{{ route('user.create') }}" class="btn btn-success mb-2">Create new</a>
-        <table class="table table-striped table-sm">
+        <a href="{{ route('user.export') }}" class="btn btn-success mb-2">Export to excel</a>
+        <table class="table table-striped table-hover table-sm">
             <thead>
             <tr>
                 <th scope="col">Id</th>

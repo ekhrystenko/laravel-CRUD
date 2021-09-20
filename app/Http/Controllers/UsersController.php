@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\UsersExport;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index(Request $request)
     {
@@ -26,7 +28,7 @@ class UsersController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function create()
     {
@@ -94,5 +96,24 @@ class UsersController extends Controller
     {
         $user->delete();
         return redirect()->route('user.index')->with('delete', 'Deleted user '.$user->name.'!');
+    }
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
+     */
+    public function export()
+    {
+        Excel::store(new UsersExport, 'users.xlsx', 'public');
+        return Excel::download(new UsersExport, 'users.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+//        $file = $request->file('file');
+//
+//        (new UsersImport())->import($file);
+//        Excel::import(new UsersImport, $file);
+//
+//        return redirect()->route('users.index')->with(['success' => 'All good!']);
     }
 }
